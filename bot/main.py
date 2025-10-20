@@ -22,7 +22,7 @@ class Bot(commands.Bot):
 		super().__init__(
                command_prefix=self.determine_prefix,
                status=discord.Status.online,
-               activity=discord.ActivityType.playing(name="chatWoot"),
+               activity=discord.Activity(type=discord.ActivityType.playing, name="chatwoot"),
                intents=discord.Intents.all()
 		)
           
