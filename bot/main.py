@@ -26,7 +26,7 @@ class Bot(commands.Bot):
                intents=discord.Intents.all()
 		)
           
-	async def determine_prefix(self, message):
+	async def determine_prefix(self, bot: commands.Bot, message: discord.Message):
 		return '>' # make a config for it if needed
      
 	async def on_ready(self):
