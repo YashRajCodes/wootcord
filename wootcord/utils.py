@@ -1,5 +1,5 @@
 import redis.asyncio as redis
-import config
+from . import config
 
 redis_pool = redis.from_url(config.broker_url)
 

@@ -2,8 +2,8 @@ import discord
 from discord.ext import commands
 
 from pydantic import ConfigDict, validate_call
-from models import ConversationCreated
-from utils import store_mappings
+from wootcord.models import ConversationCreated
+from wootcord.utils import store_mappings
 
 @validate_call(config=ConfigDict(arbitrary_types_allowed=True))
 async def handle(bot: commands.Bot, data: ConversationCreated):

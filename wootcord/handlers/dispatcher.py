@@ -1,4 +1,4 @@
-from handlers import conversation_created, message_created
+from . import conversation_created, message_created
 
 async def dispatch(bot, data):
     type = data.get("event", "none")

@@ -1,5 +1,5 @@
 from celery import Celery
-from config import broker_url
+from .config import broker_url
 
 queue = Celery('task_queue', broker=broker_url)
 
