@@ -1,7 +1,7 @@
 from flask import Flask, request, Response
 import json
-import config
-from task_queue import queue
+from . import config
+from .task_queue import queue
 
 app = Flask(__name__)
 app.logger.setLevel('INFO')
