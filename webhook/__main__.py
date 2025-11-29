@@ -1,4 +1,6 @@
 from flask import Flask, request, Response
+from waitress import serve
+import os
 import json
 from . import config
 from .task_queue import queue
@@ -21,4 +23,8 @@ def receive_webhook():
     return Response(status=200)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=3535)
+    if os.environ.get("DEVELOPMENT"):
+        app.run(host='0.0.0.0', port=3535)
+    else:
+        print("[*] Waitress Server started on port 3535")
+        serve(app, host='0.0.0.0', port=3535, threads=4)
