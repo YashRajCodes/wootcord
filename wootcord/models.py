@@ -356,6 +356,15 @@ class WebhookPayload(BaseModel):
     event: t.Literal["webwidget_triggered"]
     event_info: EventInfo
 
+class MessageCreatePayload(BaseModel):
+    """
+    Represents the payload required to create/send a message to Chatwoot.
+    """
+    content: str
+    message_type: t.Literal["incoming", "outgoing"] = "outgoing"
+    private: bool = False
+    content_type: t.Literal["text", "input_select", "cards", "form"] = "text"
+    content_attributes: t.Dict[str, t.Any] = {}
 
 Message.model_rebuild()
 Conversation.model_rebuild()

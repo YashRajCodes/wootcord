@@ -1,4 +1,5 @@
 from . import conversation_created, message_created
+from . import discord_message
 
 async def dispatch(bot, data):
     type = data.get("event", "none")
@@ -13,4 +14,9 @@ async def dispatch(bot, data):
         await message_created.handle(bot, data) 
     else:
         print(f"Received an event of type: {type}")
-        # TODO: dispatch to specific handlers based on event type
+
+async def discord_dispatch(bot, type, data):
+    print(f"Received Discord event: {type}")
+    
+    if type == "on_message":
+        await discord_message.handler(bot, data)

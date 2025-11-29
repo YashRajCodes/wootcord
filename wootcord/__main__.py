@@ -32,6 +32,9 @@ class wootcord(commands.Bot):
 	async def on_ready(self):
 		print(f'Bot is ready. Logged in as {self.user.name}')
 		self.forum: discord.ForumChannel = await self.fetch_channel(config.forum_channel_id)
+	
+	async def on_message(self, message: discord.Message):
+		await dispatcher.discord_dispatch(self, "on_message", message)
 
 	def run_celery_worker(self):
 		print("Celery worker thread is starting...")
